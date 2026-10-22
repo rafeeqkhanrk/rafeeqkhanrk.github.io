@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rafeeq Khan - Resume</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Calibri, 'Segoe UI', Arial, sans-serif;
+    color: #1A1A1A;
+    background: #f0f0f0;
+    font-size: 10.5pt;
+    line-height: 1.35;
+  }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 10mm auto;
+    padding: 14mm 16mm;
+    background: #fff;
+    box-shadow: 0 0 6px rgba(0,0,0,.25);
+  }
+  @media print {
+    body { background: #fff; }
+    .page { margin: 0; box-shadow: none; }
+  }
+  h1 { font-size: 22pt; color: #0078D4; letter-spacing: .5px; }
+  .contact { margin-top: 2mm; font-size: 10.5pt; }
+  .headline { margin-top: 1mm; font-weight: bold; font-size: 10.5pt; }
+  h2 {
+    font-size: 12pt;
+    margin: 6mm 0 1.5mm 0;
+    text-transform: uppercase;
+    border: none;
+  }
+  .entry { margin-bottom: 2.5mm; }
+  .entry-title { font-weight: bold; }
+  .muted { color: #595959; }
+  ul { margin: 1mm 0 0 5mm; }
+  li { margin-bottom: 1.2mm; }
+  .skills p { margin-bottom: 1.2mm; }
+  .skills b { font-weight: bold; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>RAFEEQ KHAN</h1>
+  <div class="contact">+91 9985142897&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;rafeeqkhan.it7@gmail.com&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Hyderabad, India</div>
+  <div class="headline">IT Infrastructure Admin&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Azure Admin&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Microsoft 365 Admin</div>
+
+  <h2>Education</h2>
+  <div class="entry">
+    <div><span class="entry-title">Osmania University, Hyderabad</span>&nbsp;&nbsp;&nbsp;&nbsp;Bachelor of Commerce (B.Com)</div>
+  </div>
+
+  <h2>Certifications</h2>
+  <ul>
+    <li><b>Microsoft Certified: Azure Administrator Associate (AZ-104)</b> &nbsp;-&nbsp; Earned</li>
+    <li><b>Microsoft 365 Certified (M365 Administrator)</b> &nbsp;-&nbsp; Earned</li>
+    <li>AZ-900 Azure Fundamentals &nbsp;-&nbsp; Recommended</li>
+    <li>AZ-305 Azure Solutions Architect &nbsp;-&nbsp; Roadmap</li>
+    <li>SC-300 / MS-102 Identity &amp; M365 Admin &nbsp;-&nbsp; Roadmap</li>
+  </ul>
+
+  <h2>Experience</h2>
+  <div class="entry">
+    <div>
+      <span class="entry-title">IT Infrastructure / Cloud Lab Administrator</span> &nbsp;-&nbsp; HomelabCenter &nbsp;-&nbsp; Hyderabad
+      <span class="muted"><b>&nbsp;&nbsp;&nbsp;&nbsp;1 Year</b></span>
+    </div>
+    <ul>
+      <li>Built a virtual datacenter on Hyper-V (Windows Server 2025): 10+ VMs, virtual switches, VHDX disks, checkpoints and per-role resource allocation.</li>
+      <li>Deployed AD DS domain controller (HYD-ADDC-V-01): new forest, OUs, users &amp; groups, GPOs, DNS records, forwarders and Sites &amp; Services.</li>
+      <li>Operated core server roles: File Server (Share vs NTFS, GPO-mapped drives), IIS with public DNS + SSL, Exchange 2025 SE (mailboxes, MX/SPF, OWA over HTTPS).</li>
+      <li>Configured a two-node Hyper-V failover cluster: iSCSI shared storage, Cluster Validation, file-share quorum witness, CSV, zero-downtime Live/Quick migration.</li>
+      <li>Established site-to-site VPN (RRAS to Azure VNet Gateway) and proved it with cross-cloud ping plus an additional Azure DC (AZU-ADDS-V-01).</li>
+      <li>Implemented Entra Connect hybrid identity: OU / attribute filtering, Password Hash Sync, synced-user verification and SSO testing.</li>
+      <li>Delivered Azure workloads: Landing Zones with policy &amp; RBAC, 2x IIS VMs behind a Public Load Balancer with health probes and failover test, Web App with Private Endpoint (public access disabled).</li>
+      <li>Protection &amp; end-user computing: Recovery Services Vault backup/restore, AVD host pool (multi-session Windows 11, multi-user test), Azure file server failover cluster with cloud witness.</li>
+    </ul>
+  </div>
+
+  <h2>Projects&nbsp;&nbsp;|&nbsp;&nbsp;15 Hands-on Labs: On-Prem &gt; Hybrid &gt; Azure</h2>
+  <ul>
+    <li><b>1. OS Installation &amp; Virtualization</b> - Clean installs of Windows 11 &amp; Windows Server 2025 from ISO, BIOS/boot settings, Desktop Experience vs Core, Hyper-V role, virtual switches, VM creation, checkpoints.</li>
+    <li><b>2. Active Directory Domain Services</b> - Forest / domain promotion, OUs, users, groups, GPO deployment (password policy, drive maps), DNS zones, forwarders, Sites &amp; Services replication.</li>
+    <li><b>3. File Server (HYD-FILE-V-01)</b> - Domain join, FSRM, shared folders, Share vs NTFS permission model, GPO-mapped S: / P: drives for users.</li>
+    <li><b>4. Web Server - IIS (HYD-WEBS-V-01)</b> - Site &amp; bindings, DNS A records, NAT + public DNS publishing, ZeroSSL certificate, HTTP to HTTPS redirect.</li>
+    <li><b>5. Exchange Server 2025 SE (HYD-MAIL-V-01)</b> - Prerequisites, mailbox role install &amp; health check, mailboxes via EAC, MX / SPF / Autodiscover, SSL-secured OWA &amp; SMTP.</li>
+    <li><b>6. Two-Node Hyper-V Failover Cluster</b> - iSCSI target &amp; LUNs, node domain join, Cluster Validation Wizard, file-share quorum witness, CSV, Live / Quick migration.</li>
+    <li><b>7. S2S VPN - On-Prem to Azure (HYD-VPNR-V-01)</b> - RRAS role, VNet, VNet peering, Virtual Network Gateway, Local Gateway, shared-key S2S connection, cross-cloud validation.</li>
+    <li><b>8. Entra Connect Hybrid Identity</b> - Express / Custom install, OU &amp; attribute filtering, Password Hash / Pass-through sync, Entra Connect Health monitoring.</li>
+    <li><b>9. Management Groups &amp; Landing Zones</b> - Tenant root group, workload vs platform landing zones, policy + RBAC assigned at MG scope for clean billing and compliance.</li>
+    <li><b>10. High-Availability Web Tier</b> - 2x IIS Azure VMs, Standard Public Load Balancer, backend pool, HTTP/HTTPS rules, health probes, simulated VM-failure failover test.</li>
+    <li><b>11. Azure Web App (PaaS)</b> - App Service plan, Private Endpoint in PrivateEndpoint subnet, Private DNS validation, public access disabled, VNet outbound integration, TLS hostname.</li>
+    <li><b>12. Azure VM Backup &amp; Restore</b> - Recovery Services Vault, storage redundancy, daily / weekly retention, on-demand backup, alerts, restore as new VM with IIS + login validation.</li>
+    <li><b>13. Azure Virtual Desktop (AVD)</b> - AVD VNet + DNS to AD, host pool, Windows 11 Enterprise multi-session + M365 Apps image, workspace, app group, RBAC, multi-user session test.</li>
+    <li><b>14. Azure File Server Failover Cluster</b> - 2 nodes (AZU-FSCL-V-01/02), Azure Shared Disk, cluster validation, Cloud Witness, Internal Load Balancer probe, clustered SMB share + failover test.</li>
+    <li><b>15. Monitoring &amp; Next Steps</b> - WSUS / Azure Update Manager, FSLogix profiles &amp; scaling plans, Entra Connect sync-rule troubleshooting, Azure SQL basics (in progress).</li>
+  </ul>
+
+  <h2>Technical Skills</h2>
+  <div class="skills">
+    <p><b>Cloud (Azure):</b> Management Groups, Landing Zones, Policies &amp; RBAC, VMs, Public Load Balancer, App Service + Private Endpoint, Recovery Services Vault, AVD, Cloud Witness</p>
+    <p><b>Operating Systems:</b> Windows Server 2025 / 2022 (Desktop Experience &amp; Core), Windows 11, Linux basics</p>
+    <p><b>Server Roles &amp; HA:</b> Hyper-V, AD DS, DNS, GPO, File Server + FSRM, IIS, Exchange Server 2025 SE, WSUS (basic), Failover Clustering, iSCSI Target, CSV, Live Migration</p>
+    <p><b>Networking:</b> RRAS S2S VPN, VNet Gateway, VNet Peering, NAT, TCP/IP, VLANs, DHCP, DNS</p>
+    <p><b>Identity / M365:</b> Microsoft Entra ID (Azure AD), Entra Connect Sync, Password Hash Sync, SSO</p>
+    <p><b>Tools &amp; Scripting:</b> PowerShell, Server Manager, Entra Admin Center, Azure Portal, Azure CLI</p>
+  </div>
+
+</div>
+</body>
+</html>
