@@ -3,689 +3,708 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rafeeq Khan — IT Infrastructure &amp; Azure Administrator</title>
-<meta name="description" content="Rafeeq Khan — IT Infrastructure, Azure and Microsoft 365 Administrator from Hyderabad. On-Prem to Hybrid to Azure, 15+ production-style labs.">
-<meta name="theme-color" content="#0a0b10">
+<title>Rafeeq Khan — Portfolio</title>
+<meta name="description" content="Rafeeq Khan — IT Infrastructure, Azure and Microsoft 365 Administrator from Hyderabad. On-Prem > Hybrid > Azure, 15+ hands-on labs.">
+<meta name="theme-color" content="#09090f">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap" rel="stylesheet">
 <style>
-/* ============ RESET & TOKENS ============ */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-:root{
-  --bg:#0a0b10; --bg-2:#0e1017; --surface:#12141d; --surface-2:#171a25;
-  --border:#222636; --border-2:#2e3346;
-  --gold:#e2bd57; --gold-soft:#f6e6b0; --gold-rgb:226,189,87;
-  --mint:#5fd6b0; --mint-rgb:95,214,176;
-  --text:#e9eaf2; --muted:#9296ad; --faint:#666b83;
-  --font-head:'Sora',system-ui,-apple-system,'Segoe UI',sans-serif;
-  --font-body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-  --r:16px; --max:1140px;
-  --shadow:0 30px 60px -30px rgba(0,0,0,.85);
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+:root {
+  --bg: #09090f; --surface: #111118; --border: #1e1e2e;
+  --accent: #d6b840; --accent2: #f0e2a0;
+  --accent-rgb: 214,184,64; --accent2-rgb: 240,226,160;
+  --text: #e2e2f0; --muted: #8a8aa8;
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --radius: 12px; --max: 860px;
 }
-html{scroll-behavior:smooth;scroll-padding-top:84px}
-body{
-  background:var(--bg);color:var(--text);font-family:var(--font-body);
-  font-size:16px;line-height:1.7;overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--text); font-family: var(--font);
+  font-size: 16px; line-height: 1.65; font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
 }
-body::before{ /* aurora wash */
-  content:'';position:fixed;inset:0;z-index:-2;pointer-events:none;
-  background:
-    radial-gradient(900px 520px at 78% -8%, rgba(var(--gold-rgb),.14), transparent 62%),
-    radial-gradient(760px 480px at 8% 12%, rgba(var(--mint-rgb),.10), transparent 60%),
-    radial-gradient(1000px 700px at 50% 110%, rgba(var(--gold-rgb),.07), transparent 65%);
-}
-body::after{ /* grid */
-  content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.4;
-  background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),
-                   linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
-  background-size:64px 64px;
-  mask-image:radial-gradient(circle at 50% 30%, #000 0%, transparent 78%);
-  -webkit-mask-image:radial-gradient(circle at 50% 30%, #000 0%, transparent 78%);
-}
-img,svg{display:block;max-width:100%}
-a{color:inherit}
-::selection{background:rgba(var(--gold-rgb),.3);color:#fff}
 
-/* ============ PROGRESS BAR ============ */
-.progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:300;
-  background:linear-gradient(90deg,var(--gold),var(--mint));box-shadow:0 0 12px rgba(var(--gold-rgb),.6)}
+/* scroll progress + cursor */
+.scroll-progress { position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: linear-gradient(90deg, var(--accent), var(--accent2)); z-index: 200; transition: width .1s linear; }
+.cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); opacity: 0; transition: opacity .25s ease; }
+.cursor-dot { width: 6px; height: 6px; background: var(--accent2); mix-blend-mode: difference; }
+.cursor-ring { width: 38px; height: 38px; border: 1px solid var(--accent); background: rgba(var(--accent-rgb), .05); transition: width .35s cubic-bezier(.16,1,.3,1), height .35s cubic-bezier(.16,1,.3,1), border-color .3s, background .3s, opacity .25s; }
+body.has-cursor .cursor-dot, body.has-cursor .cursor-ring { opacity: 1; }
+body.has-cursor, body.has-cursor a, body.has-cursor button, body.has-cursor .project-card { cursor: none; }
+.cursor-ring.is-link { width: 78px; height: 78px; border-color: var(--accent2); background: rgba(var(--accent-rgb), .1); }
+.cursor-ring.is-link .cursor-label { opacity: 1; transform: scale(1); }
+.cursor-label { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: .62rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent2); opacity: 0; transform: scale(.6); transition: opacity .25s, transform .25s; white-space: nowrap; }
+.magnetic { display: inline-flex; }
 
-/* ============ NAV ============ */
-.nav{position:fixed;top:0;left:0;right:0;z-index:200;transition:background .35s,border-color .35s,backdrop-filter .35s;
-  border-bottom:1px solid transparent}
-.nav.stuck{background:rgba(10,11,16,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom-color:var(--border)}
-.nav-in{max-width:var(--max);margin:0 auto;padding:1.05rem clamp(1.1rem,4vw,2.2rem);
-  display:flex;align-items:center;justify-content:space-between;gap:1.5rem}
-.brand{display:flex;align-items:center;gap:.65rem;text-decoration:none;font-family:var(--font-head);
-  font-weight:700;font-size:1rem;letter-spacing:-.02em}
-.brand-mark{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;flex-shrink:0;
-  background:linear-gradient(140deg,var(--gold),#b98f2e);color:#14100a;font-size:.78rem;font-weight:800;
-  box-shadow:0 6px 18px -8px rgba(var(--gold-rgb),.9)}
-.brand span{color:var(--gold-soft)}
-.nav-links{display:flex;align-items:center;gap:.35rem;list-style:none}
-.nav-links a{position:relative;display:block;padding:.5rem .85rem;font-size:.87rem;font-weight:500;
-  color:var(--muted);text-decoration:none;border-radius:8px;transition:color .25s,background .25s}
-.nav-links a::after{content:'';position:absolute;left:.85rem;right:.85rem;bottom:.32rem;height:1.5px;
-  background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.16,1,.3,1)}
-.nav-links a:hover,.nav-links a.active{color:var(--text);background:rgba(255,255,255,.04)}
-.nav-links a.active::after,.nav-links a:hover::after{transform:scaleX(1)}
-.nav-cta{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.15rem;border-radius:10px;
-  font-size:.85rem;font-weight:600;text-decoration:none;background:var(--gold);color:#14100a;
-  transition:transform .25s,box-shadow .25s,filter .25s}
-.nav-cta:hover{transform:translateY(-2px);filter:brightness(1.06);box-shadow:0 14px 30px -14px rgba(var(--gold-rgb),.85)}
-.burger{display:none;width:42px;height:42px;border:1px solid var(--border);background:var(--surface);
-  border-radius:10px;cursor:pointer;place-items:center}
-.burger i{display:block;width:16px;height:1.5px;background:var(--text);position:relative;transition:.3s}
-.burger i::before,.burger i::after{content:'';position:absolute;left:0;width:16px;height:1.5px;background:var(--text);transition:.3s}
-.burger i::before{top:-5px}.burger i::after{top:5px}
-.burger.open i{background:transparent}
-.burger.open i::before{top:0;transform:rotate(45deg)}
-.burger.open i::after{top:0;transform:rotate(-45deg)}
+/* nav */
+.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 2.5rem; background: rgba(9,9,15,.75); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); }
+.nav-logo { display: inline-flex; align-items: center; gap: .55rem; font-size: .92rem; font-weight: 600; color: var(--accent2); text-decoration: none; }
+.nav-status-dot { width: 7px; height: 7px; border-radius: 50%; background: #3ddc84; box-shadow: 0 0 8px #3ddc84; flex-shrink: 0; animation: pulse 2.2s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .45; } }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: .86rem; font-weight: 500; color: var(--muted); text-decoration: none; transition: color .2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent2); }
 
-/* ============ LAYOUT ============ */
-.container{max-width:var(--max);margin:0 auto;padding:0 clamp(1.1rem,4vw,2.2rem)}
-section{position:relative}
-.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.74rem;font-weight:600;
-  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
-.eyebrow::before{content:'';width:26px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
-h2.title{font-family:var(--font-head);font-size:clamp(1.9rem,4vw,2.9rem);font-weight:700;
-  letter-spacing:-.035em;line-height:1.08;margin-bottom:.85rem}
-.lead{color:var(--muted);font-size:1.02rem;max-width:62ch;margin-bottom:2.6rem}
-.sec-head{margin-bottom:2.8rem}
+/* layout */
+section { position: relative; z-index: 1; }
+.container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+.section-label { font-size: .9rem; font-weight: 500; color: var(--accent); margin-bottom: .6rem; }
+h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -.03em; line-height: 1.1; margin-bottom: 3rem; }
+.btn { font-size: .85rem; font-weight: 500; padding: .7rem 1.5rem; border-radius: 6px; text-decoration: none; transition: all .2s; cursor: pointer; border: none; display: inline-flex; align-items: center; gap: .5rem; }
+.btn-primary { background: var(--accent); color: var(--bg); font-weight: 600; }
+.btn-primary:hover { background: var(--accent2); transform: translateY(-1px); box-shadow: 0 10px 24px -10px rgba(var(--accent-rgb), .6); }
+.btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+.btn-outline:hover { border-color: var(--accent); color: var(--accent2); transform: translateY(-1px); }
+.exp-bullets { list-style: none; }
+.exp-bullets li { font-size: .9rem; color: var(--muted); padding: .2rem 0; display: flex; gap: .6rem; }
+.exp-bullets li::before { content: '–'; color: var(--accent); flex-shrink: 0; }
+.project-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
+.tag { font-size: .74rem; font-weight: 500; color: var(--accent2); background: rgba(var(--accent-rgb), .1); border: 1px solid rgba(var(--accent-rgb), .2); padding: .2rem .6rem; border-radius: 4px; }
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+footer { border-top: 1px solid var(--border); padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; font-size: .8rem; color: var(--muted); position: relative; z-index: 1; flex-wrap: wrap; gap: .5rem; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+@keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
-  padding:.82rem 1.5rem;border-radius:11px;font-size:.88rem;font-weight:600;text-decoration:none;
-  border:1px solid transparent;cursor:pointer;transition:transform .25s,box-shadow .25s,background .25s,border-color .25s,color .25s}
-.btn-primary{background:var(--gold);color:#14100a}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 34px -16px rgba(var(--gold-rgb),.9)}
-.btn-ghost{background:rgba(255,255,255,.03);border-color:var(--border-2);color:var(--text)}
-.btn-ghost:hover{border-color:var(--gold);color:var(--gold-soft);transform:translateY(-3px)}
-.btn svg{width:15px;height:15px}
+/* hero */
+#hero { min-height: 100vh; min-height: 100svh; display: flex; align-items: center; padding: 7rem 0 4rem; position: relative; overflow: hidden; }
+#hero .container { max-width: 1180px; position: relative; z-index: 2; }
+#netCanvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; opacity: 0; transition: opacity 1.2s ease; pointer-events: none; }
+#netCanvas.is-ready { opacity: 1; }
+.hero-glow { position: absolute; width: 620px; height: 620px; border-radius: 50%; filter: blur(120px); opacity: .16; background: var(--accent); top: 8%; right: 6%; z-index: 0; pointer-events: none; animation: floaty 9s ease-in-out infinite; }
+.hero-inner { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 4rem; align-items: center; }
+.hero-tag { font-size: 1rem; font-weight: 500; color: var(--muted); margin-bottom: 1rem; display: flex; align-items: center; gap: .6rem; }
+.hero-tag::before { content: ''; width: 26px; height: 1px; background: var(--accent); display: inline-block; }
+.hero-name { font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 700; letter-spacing: -.045em; line-height: 1.02; margin-bottom: .5rem; background: linear-gradient(120deg, var(--text) 55%, var(--accent2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-role { font-size: clamp(1.1rem, 3vw, 1.6rem); font-weight: 600; letter-spacing: -.015em; color: var(--accent2); margin-bottom: 1.5rem; min-height: 1.6em; }
+.type-caret { display: inline-block; width: 2px; height: 1em; background: var(--accent2); margin-left: 3px; vertical-align: -2px; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.hero-bio { color: var(--muted); font-size: 1rem; max-width: 480px; line-height: 1.7; margin-bottom: 2.5rem; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-avatar { width: clamp(280px, 30vw, 440px); height: clamp(280px, 30vw, 440px); flex-shrink: 0; position: relative; z-index: 3; animation: fadeUp .8s .3s ease both; display: flex; align-items: flex-end; justify-content: center; }
+.pixel-char { width: 88%; height: auto; position: relative; z-index: 2; animation: charBob 5s ease-in-out infinite; }
+@keyframes charBob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.char-shadow { position: absolute; bottom: 4%; left: 50%; transform: translateX(-50%); width: 58%; height: 22px; background: radial-gradient(ellipse, rgba(0,0,0,.65), transparent 70%); z-index: 1; animation: shadowPulse 5s ease-in-out infinite; }
+@keyframes shadowPulse { 0%,100% { transform: translateX(-50%) scaleX(1); opacity: .7; } 50% { transform: translateX(-50%) scaleX(.85); opacity: .45; } }
+.hero-avatar-chip { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--border); background: rgba(9,9,15,.7); padding: .3rem .8rem; border-radius: 999px; white-space: nowrap; backdrop-filter: blur(6px); }
+.hero-tag, .hero-name, .hero-role, .hero-bio, .hero-actions, .hero-avatar { animation-name: fadeUp; animation-duration: .6s; animation-fill-mode: both; }
+.hero-tag { animation-delay: .1s; } .hero-name { animation-delay: .2s; } .hero-role { animation-delay: .3s; }
+.hero-bio { animation-delay: .4s; } .hero-actions { animation-delay: .5s; } .hero-avatar { animation-delay: .3s; }
 
-/* ============ HERO ============ */
-.hero{min-height:100svh;display:flex;align-items:center;padding:7.5rem 0 4rem;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(2rem,5vw,4.5rem);align-items:center}
-.avail{display:inline-flex;align-items:center;gap:.6rem;padding:.42rem .95rem;border-radius:999px;
-  background:rgba(var(--mint-rgb),.09);border:1px solid rgba(var(--mint-rgb),.32);
-  font-size:.78rem;font-weight:600;color:var(--mint);margin-bottom:1.5rem}
-.dot-live{width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 0 rgba(var(--mint-rgb),.7);
-  animation:ping 2s infinite}
-@keyframes ping{70%{box-shadow:0 0 0 9px rgba(var(--mint-rgb),0)}100%{box-shadow:0 0 0 0 rgba(var(--mint-rgb),0)}}
-h1.hero-name{font-family:var(--font-head);font-size:clamp(2.9rem,7.6vw,5rem);font-weight:800;
-  letter-spacing:-.05em;line-height:.98;margin-bottom:1rem}
-h1.hero-name em{font-style:normal;display:block;
-  background:linear-gradient(100deg,var(--gold-soft) 10%,var(--gold) 55%,#c39a34 90%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.hero-role{font-family:var(--font-head);font-size:clamp(1rem,2.4vw,1.35rem);font-weight:600;
-  color:var(--text);min-height:1.6em;margin-bottom:1.35rem;letter-spacing:-.015em}
-.caret{display:inline-block;width:2px;height:.95em;background:var(--gold);vertical-align:-2px;
-  margin-left:3px;animation:blink 1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-.hero-bio{color:var(--muted);font-size:1.03rem;max-width:52ch;margin-bottom:2rem}
-.hero-actions{display:flex;flex-wrap:wrap;gap:.85rem;margin-bottom:2.4rem}
-.hero-meta{display:flex;flex-wrap:wrap;gap:1.6rem;padding-top:1.6rem;border-top:1px solid var(--border)}
-.hero-meta div{min-width:120px}
-.hero-meta b{display:block;font-family:var(--font-head);font-size:1.5rem;font-weight:700;color:var(--gold-soft);letter-spacing:-.03em}
-.hero-meta span{font-size:.78rem;color:var(--faint);letter-spacing:.04em}
+/* stats */
+#stats { padding: 0 0 2rem; margin-top: -2rem; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.3rem 1.4rem; text-align: left; position: relative; overflow: hidden; }
+.stat-card::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--accent), transparent); }
+.stat-num { font-size: 1.9rem; font-weight: 800; letter-spacing: -.03em; color: var(--accent2); line-height: 1.1; }
+.stat-lbl { font-size: .8rem; color: var(--muted); margin-top: .25rem; }
+@media (max-width: 720px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
 
-/* hero visual */
-.visual{position:relative;aspect-ratio:1/1;max-width:520px;margin-inline:auto;width:100%}
-.v-ring{position:absolute;inset:0;border-radius:50%;border:1px solid var(--border-2)}
-.v-ring.r2{inset:11%;border-style:dashed;border-color:rgba(var(--gold-rgb),.28);animation:spin 46s linear infinite}
-.v-ring.r3{inset:23%;border-color:rgba(var(--mint-rgb),.24)}
-@keyframes spin{to{transform:rotate(360deg)}}
-.v-core{position:absolute;inset:31%;border-radius:50%;display:grid;place-items:center;text-align:center;
-  background:linear-gradient(150deg,var(--surface-2),var(--bg-2));
-  border:1px solid rgba(var(--gold-rgb),.4);box-shadow:0 0 70px -18px rgba(var(--gold-rgb),.55),inset 0 0 40px -20px rgba(var(--gold-rgb),.6)}
-.v-core b{font-family:var(--font-head);font-size:clamp(2.4rem,6vw,3.4rem);font-weight:800;
-  letter-spacing:-.05em;line-height:1;color:var(--gold-soft)}
-.v-core span{display:block;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--faint);margin-top:.4rem}
-.v-chip{position:absolute;padding:.5rem .9rem;border-radius:10px;font-size:.72rem;font-weight:600;
-  letter-spacing:.06em;background:rgba(18,20,29,.92);border:1px solid var(--border-2);
-  backdrop-filter:blur(8px);white-space:nowrap;box-shadow:var(--shadow);animation:bob 6s ease-in-out infinite}
-.v-chip.c1{top:4%;left:50%;transform:translateX(-50%);color:var(--mint);border-color:rgba(var(--mint-rgb),.4);animation-delay:.2s}
-.v-chip.c2{top:47%;right:-4%;color:var(--gold-soft);animation-delay:1.4s}
-.v-chip.c3{bottom:8%;left:0;color:var(--gold-soft);animation-delay:2.6s}
-.v-chip.c4{bottom:26%;right:2%;color:var(--mint);border-color:rgba(var(--mint-rgb),.4);animation-delay:3.6s}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-.v-chip.c1{animation-name:bob-c}
-@keyframes bob-c{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-9px)}}
-.v-node{position:absolute;width:9px;height:9px;border-radius:50%;background:var(--gold);
-  box-shadow:0 0 14px 3px rgba(var(--gold-rgb),.7)}
-.v-node.n1{top:10.5%;left:50%}.v-node.n2{top:50%;right:9.5%}
-.v-node.n3{bottom:10.5%;left:50%}.v-node.n4{top:50%;left:9.5%}
-.v-node::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(var(--gold-rgb),.5);
-  animation:ripple 2.6s ease-out infinite}
-@keyframes ripple{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.9);opacity:0}}
+/* experience */
+#experience { padding: 5rem 0 6rem; }
+.exp-item { display: grid; grid-template-columns: 140px 1fr; gap: 1.5rem 2.5rem; padding: 2.2rem 0; border-bottom: 1px solid var(--border); }
+.exp-date { font-size: .82rem; font-weight: 500; color: var(--muted); padding-top: .2rem; }
+.exp-company { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; color: var(--text); margin-bottom: .2rem; }
+.exp-role { font-size: .84rem; font-weight: 500; color: var(--accent); margin-bottom: .8rem; }
 
-/* ============ TICKER ============ */
-.ticker{border-block:1px solid var(--border);background:rgba(255,255,255,.015);
-  padding:.9rem 0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.ticker-track{display:flex;gap:2.6rem;width:max-content;animation:slide 34s linear infinite}
-.ticker:hover .ticker-track{animation-play-state:paused}
-@keyframes slide{to{transform:translateX(-50%)}}
-.ticker span{font-family:var(--font-head);font-size:.82rem;font-weight:600;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--faint);display:flex;align-items:center;gap:2.6rem;white-space:nowrap}
-.ticker span::after{content:'';width:5px;height:5px;border-radius:50%;background:rgba(var(--gold-rgb),.55)}
+/* projects */
+#projects { padding: 6rem 0; }
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 1.5rem; }
+.project-card { display: block; text-decoration: none; color: inherit; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.8rem; position: relative; overflow: hidden; transition: transform .3s ease, border-color .25s, box-shadow .3s; transform-style: preserve-3d; }
+.project-card:hover { border-color: rgba(var(--accent-rgb), .55); box-shadow: 0 24px 50px -24px rgba(var(--accent-rgb), .35); }
+.card-media { position: relative; aspect-ratio: 16/10; overflow: hidden; margin: -1.8rem -1.8rem 1.4rem; border-radius: var(--radius) var(--radius) 0 0; background: radial-gradient(240px 150px at 20% 20%, rgba(var(--accent-rgb), .16), transparent 60%), radial-gradient(220px 140px at 85% 80%, rgba(var(--accent-rgb), .07), transparent 60%), var(--bg); display: flex; align-items: center; justify-content: center; }
+.card-media::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(var(--accent-rgb), .05) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--accent-rgb), .05) 1px, transparent 1px); background-size: 22px 22px; }
+.card-media svg { width: 78%; height: 78%; position: relative; z-index: 1; }
+.card-media .project-num { position: absolute; left: 1.4rem; bottom: 1rem; color: var(--text); margin-bottom: 0; z-index: 2; }
+/* diagram animations — subtle */
+@keyframes blinkLed { 0%,100% { opacity: .9; } 50% { opacity: .4; } }
+@keyframes dashFlow { to { stroke-dashoffset: -12; } }
+@keyframes pulseNode { 0%,100% { opacity: .9; } 50% { opacity: .55; } }
+@keyframes pulseRing2 { 0% { opacity: .35; } 100% { opacity: 0; } }
+@keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+.led { animation: blinkLed 3.5s ease-in-out infinite; }
+.led.d1 { animation-delay: .8s; } .led.d2 { animation-delay: 1.6s; } .led.d3 { animation-delay: 2.4s; }
+.flow { stroke-dasharray: 4 4; animation: dashFlow 1.4s linear infinite; }
+.pulse { animation: pulseNode 3s ease-in-out infinite; }
+.ring { animation: pulseRing2 3s ease-out infinite; }
+.floaty-svg { animation: floatY 4s ease-in-out infinite; }
+.project-num { font-size: .8rem; font-weight: 600; color: var(--accent); margin-bottom: 1rem; }
+.project-title { font-size: 1.12rem; font-weight: 600; letter-spacing: -.015em; margin-bottom: .7rem; color: var(--text); }
+.project-desc { font-size: .88rem; color: var(--muted); line-height: 1.65; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }
+.project-card .project-tags { margin-top: 1.2rem; }
+.project-open { font-size: .88rem; font-weight: 500; color: var(--muted); margin-top: 1.4rem; display: flex; align-items: center; gap: .4rem; transition: color .25s, gap .25s; }
+.project-open::after { content: '→'; }
+.project-card:hover .project-open { color: var(--accent2); gap: .8rem; }
 
-/* ============ STATS ============ */
-.stats{padding:4.5rem 0 1rem}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
-.stat{background:linear-gradient(160deg,var(--surface),rgba(18,20,29,.35));border:1px solid var(--border);
-  border-radius:var(--r);padding:1.6rem 1.5rem;position:relative;overflow:hidden;transition:border-color .3s,transform .3s}
-.stat:hover{border-color:rgba(var(--gold-rgb),.45);transform:translateY(-4px)}
-.stat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--gold),transparent)}
-.stat b{display:block;font-family:var(--font-head);font-size:2.3rem;font-weight:800;letter-spacing:-.045em;
-  line-height:1.05;color:var(--gold-soft)}
-.stat span{display:block;font-size:.83rem;color:var(--muted);margin-top:.35rem}
+/* skills */
+#skills { padding: 6rem 0; }
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1rem; }
+.skill-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem 1.4rem; transition: border-color .25s, transform .25s; }
+.skill-box:hover { border-color: rgba(var(--accent-rgb), .5); transform: translateY(-2px); }
+.skill-box b { display: block; color: var(--text); font-weight: 600; margin-bottom: .35rem; font-size: .95rem; }
+.skill-box b::before { content: '▸ '; color: var(--accent); }
+.skill-box span { color: var(--muted); font-size: .88rem; line-height: 1.6; }
 
-/* ============ EXPERIENCE ============ */
-.experience{padding:5.5rem 0}
-.timeline{position:relative;padding-left:2.1rem}
-.timeline::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:1.5px;
-  background:linear-gradient(180deg,var(--gold),rgba(var(--gold-rgb),.12))}
-.tl-item{position:relative;padding:0 0 2.6rem}
-.tl-item:last-child{padding-bottom:0}
-.tl-item::before{content:'';position:absolute;left:-2.1rem;top:8px;width:13px;height:13px;border-radius:50%;
-  background:var(--bg);border:2px solid var(--gold);box-shadow:0 0 0 4px rgba(var(--gold-rgb),.14)}
-.tl-top{display:flex;flex-wrap:wrap;align-items:center;gap:.7rem;margin-bottom:.35rem}
-.tl-pill{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  padding:.25rem .65rem;border-radius:6px;background:rgba(var(--gold-rgb),.12);color:var(--gold);border:1px solid rgba(var(--gold-rgb),.3)}
-.tl-org{font-family:var(--font-head);font-size:1.2rem;font-weight:700;letter-spacing:-.02em}
-.tl-role{font-size:.88rem;color:var(--mint);font-weight:600;margin-bottom:1rem}
-.bullets{list-style:none;display:grid;gap:.55rem}
-.bullets li{position:relative;padding-left:1.35rem;font-size:.93rem;color:var(--muted);line-height:1.65}
-.bullets li::before{content:'';position:absolute;left:0;top:.62em;width:7px;height:7px;
-  border-radius:2px;background:rgba(var(--gold-rgb),.75);transform:rotate(45deg)}
-.bullets li strong{color:var(--text);font-weight:600}
+/* contact */
+#contact { padding: 6rem 0 5rem; }
+.contact-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 3rem; text-align: center; position: relative; overflow: hidden; }
+.contact-box::before { content: ''; position: absolute; width: 420px; height: 420px; border-radius: 50%; background: var(--accent); filter: blur(130px); opacity: .10; top: -180px; left: 50%; transform: translateX(-50%); pointer-events: none; }
+.contact-box h2 { margin-bottom: .7rem; position: relative; }
+.contact-sub { color: var(--muted); font-size: .95rem; margin-bottom: 2rem; position: relative; }
+.contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; position: relative; }
+.contact-link { font-size: .85rem; font-weight: 500; color: var(--muted); text-decoration: none; border: 1px solid var(--border); padding: .6rem 1.3rem; border-radius: 6px; transition: color .2s, border-color .2s, transform .2s; }
+.contact-link:hover { color: var(--accent2); border-color: var(--accent); transform: translateY(-2px); }
 
-/* ============ PROJECTS ============ */
-.projects{padding:5.5rem 0;background:linear-gradient(180deg,transparent,rgba(255,255,255,.014),transparent)}
-.p-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.4rem}
-.card{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
-  padding:1.6rem;overflow:hidden;text-decoration:none;color:inherit;
-  transition:transform .4s cubic-bezier(.16,1,.3,1),border-color .3s,box-shadow .4s}
-.card::after{content:'';position:absolute;inset:0;border-radius:var(--r);pointer-events:none;opacity:0;
-  background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(var(--gold-rgb),.10),transparent 45%);
-  transition:opacity .35s}
-.card:hover{transform:translateY(-7px);border-color:rgba(var(--gold-rgb),.5);box-shadow:0 34px 60px -34px rgba(var(--gold-rgb),.5)}
-.card:hover::after{opacity:1}
-.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1.1rem}
-.card-idx{font-family:var(--font-head);font-size:.76rem;font-weight:700;letter-spacing:.16em;color:var(--gold)}
-.card-ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;flex-shrink:0;
-  background:rgba(var(--gold-rgb),.1);border:1px solid rgba(var(--gold-rgb),.28)}
-.card-ico svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.card h3{font-family:var(--font-head);font-size:1.08rem;font-weight:700;letter-spacing:-.02em;line-height:1.35;margin-bottom:.6rem}
-.card p{font-size:.9rem;color:var(--muted);line-height:1.65}
-.tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.15rem}
-.tag{font-size:.7rem;font-weight:600;letter-spacing:.04em;padding:.26rem .6rem;border-radius:6px;
-  background:rgba(255,255,255,.04);border:1px solid var(--border-2);color:var(--muted)}
-.card-more{display:flex;align-items:center;gap:.4rem;margin-top:1.25rem;font-size:.85rem;font-weight:600;
-  color:var(--gold);transition:gap .3s}
-.card:hover .card-more{gap:.75rem}
+/* back to top */
+.to-top { position: fixed; right: 22px; bottom: 22px; z-index: 90; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border); background: rgba(17,17,24,.9); color: var(--accent2); font-size: 1.1rem; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .3s, transform .3s, border-color .2s; backdrop-filter: blur(8px); text-decoration: none; }
+.to-top.show { opacity: 1; pointer-events: auto; }
+.to-top:hover { border-color: var(--accent); transform: translateY(-3px); }
 
-/* ============ SKILLS ============ */
-.skills{padding:5.5rem 0}
-.skill-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem}
-.skill{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
-  padding:1.5rem 1.4rem;transition:transform .3s,border-color .3s,background .3s}
-.skill:hover{transform:translateY(-4px);border-color:rgba(var(--mint-rgb),.42);background:var(--surface-2)}
-.skill-top{display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem}
-.skill-num{font-family:var(--font-head);font-size:.72rem;font-weight:700;color:var(--gold);
-  padding:.2rem .5rem;border:1px solid rgba(var(--gold-rgb),.34);border-radius:5px}
-.skill h4{font-family:var(--font-head);font-size:1rem;font-weight:700;letter-spacing:-.02em}
-.skill p{font-size:.87rem;color:var(--muted);line-height:1.65}
-.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.9rem}
-.chip{font-size:.7rem;font-weight:600;padding:.24rem .58rem;border-radius:999px;
-  background:rgba(var(--mint-rgb),.08);border:1px solid rgba(var(--mint-rgb),.24);color:var(--mint)}
-
-/* ============ CONTACT ============ */
-.contact{padding:5rem 0 6rem}
-.contact-\boxed{position:relative;border:1px solid var(--border-2);border-radius:24px;overflow:hidden;
-  padding:clamp(2.4rem,6vw,4.2rem);text-align:center;
-  background:linear-gradient(160deg,var(--surface-2),var(--bg-2) 70%)}
-.contact-box::before{content:'';position:absolute;width:560px;height:560px;border-radius:50%;
-  background:var(--gold);filter:blur(150px);opacity:.11;top:-300px;left:50%;transform:translateX(-50%);pointer-events:none}
-.contact-box h2{font-family:var(--font-head);font-size:clamp(1.9rem,4.6vw,3rem);font-weight:800;
-  letter-spacing:-.04em;margin-bottom:.9rem;position:relative}
-.contact-box p.sub{color:var(--muted);max-width:52ch;margin:0 auto 2.2rem;position:relative;font-size:1rem}
-.contact-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:.85rem;position:relative}
-.info-row{display:flex;justify-content:center;flex-wrap:wrap;gap:.7rem;margin-top:2.2rem;position:relative}
-.info{display:inline-flex;align-items:center;gap:.6rem;padding:.7rem 1.15rem;border-radius:11px;
-  background:rgba(255,255,255,.03);border:1px solid var(--border);font-size:.87rem;color:var(--muted);
-  text-decoration:none;transition:border-color .25s,color .25s,transform .25s}
-.info:hover{border-color:var(--gold);color:var(--gold-soft);transform:translateY(-3px)}
-.info svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-
-/* ============ FOOTER + TOP ============ */
-footer{border-top:1px solid var(--border);padding:1.6rem clamp(1.1rem,4vw,2.2rem);
-  display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;
-  font-size:.82rem;color:var(--faint)}
-footer a{color:var(--muted);text-decoration:none;transition:color .25s}
-footer a:hover{color:var(--gold)}
-.to-top{position:fixed;right:20px;bottom:20px;z-index:150;width:46px;height:46px;border-radius:14px;
-  display:grid;place-items:center;background:var(--surface);border:1px solid var(--border-2);
-  color:var(--gold-soft);text-decoration:none;opacity:0;pointer-events:none;
-  transform:translateY(12px);transition:.35s;backdrop-filter:blur(8px)}
-.to-top.show{opacity:1;pointer-events:auto;transform:none}
-.to-top:hover{border-color:var(--gold);transform:translateY(-4px)}
-.to-top svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-
-/* ============ REVEAL ============ */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
-.reveal.in{opacity:1;transform:none}
-
-/* ============ RESPONSIVE ============ */
-@media (max-width:960px){
-  .hero-grid{grid-template-columns:1fr}
-  .visual{max-width:400px;order:-1;margin-bottom:1rem}
-  .stats-grid{grid-template-columns:repeat(2,1fr)}
-}
-@media (max-width:760px){
-  .nav-links,.nav-cta{display:none}
-  .burger{display:grid}
-  .nav.menu-open{background:rgba(10,11,16,.97);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom-color:var(--border)}
-  .nav.menu-open .nav-in{flex-wrap:wrap;padding-bottom:1.25rem}
-  .nav.menu-open .nav-links{display:flex;order:3;flex-basis:100%;flex-direction:column;
-    align-items:stretch;gap:.15rem;margin-top:.95rem;padding-top:.5rem;border-top:1px solid var(--border)}
-  .nav.menu-open .nav-links a{padding:.8rem .55rem;font-size:.98rem}
-  .nav.menu-open .nav-links a::after{display:none}
-  .nav.menu-open .nav-cta{display:inline-flex;order:4;flex-basis:100%;justify-content:center;
-    margin-top:.8rem;padding:.85rem 1.2rem}
-  .hero{padding-top:6.5rem}
-  .hero-meta{gap:1.1rem}
-}
-@media (max-width:520px){
-  .stats-grid{grid-template-columns:1fr}
-  .p-grid{grid-template-columns:1fr}
-  .timeline{padding-left:1.7rem}
-  .tl-item::before{left:-1.7rem}
-}
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
-  html{scroll-behavior:auto}
-  .reveal{opacity:1;transform:none}
+@media (max-width: 680px) {
+  .site-nav { padding: 1rem 1.2rem; }
+  .nav-links { gap: 1.2rem; }
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-avatar { display: none; }
+  .exp-item { grid-template-columns: 1fr; gap: .4rem; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .contact-box { padding: 2rem 1.5rem; }
 }
 </style>
 </head>
 <body>
 
-<div class="progress" id="progress"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"><span class="cursor-label" id="cursorLabel">View</span></div>
 
-<nav class="nav" id="nav">
-  <div class="nav-in">
-    <a class="brand" href="#top">
-      <span class="brand-mark">RK</span>
-      rafeeq<span>khan</span>
-    </a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a class="nav-cta" href="Rafeeq_Khan_Resume.pptx" download>
-      Resume
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
-    </a>
-    <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><i></i></button>
-  </div>
+<nav class="site-nav">
+  <a class="nav-logo" href="#hero"><span class="nav-status-dot"></span>RafeeqKhan.cloud</a>
+  <ul class="nav-links">
+    <li><a href="#experience" data-nav>Experience</a></li>
+    <li><a href="#projects" data-nav>Projects</a></li>
+    <li><a href="#skills" data-nav>Skills</a></li>
+    <li><a href="#contact" data-nav>Contact</a></li>
+  </ul>
 </nav>
 
-<!-- ================= HERO ================= -->
-<header class="hero" id="top">
+<section id="hero">
+  <canvas id="netCanvas" aria-hidden="true"></canvas>
+  <div class="hero-glow" aria-hidden="true"></div>
   <div class="container">
-    <div class="hero-grid">
+    <div class="hero-inner">
       <div>
-        <div class="avail"><span class="dot-live"></span> Available for opportunities</div>
-        <h1 class="hero-name">Rafeeq<em>Khan</em></h1>
-        <p class="hero-role"><span id="typed"></span><span class="caret"></span></p>
+        <div class="hero-tag">IT Infrastructure · Azure · Microsoft 365 Administrator</div>
+        <h1 class="hero-name">Rafeeq<br>Khan</h1>
+        <p class="hero-role"><span id="typed"></span><span class="type-caret"></span></p>
         <p class="hero-bio">
-          I design, build and run complete IT environments end to end — Windows Server on Hyper-V,
-          Active Directory, file, web and mail servers, failover clustering, site-to-site VPN into Azure,
+          I build and administer complete IT environments end-to-end — Windows Server on Hyper-V,
+          Active Directory, File/Web/Mail servers, failover clustering, site-to-site VPN to Azure,
           Entra Connect hybrid identity and native Azure services. 15+ production-style labs,
-          planned, deployed and documented from scratch.
+          designed, built and documented from scratch.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#projects">
-            View Projects
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
-          <a class="btn btn-ghost" href="#experience">Experience</a>
-          <a class="btn btn-ghost" href="#contact">Contact</a>
-        </div>
-        <div class="hero-meta">
-          <div><b>15+</b><span>Hands-on labs</span></div>
-          <div><b>20+</b><span>VMs deployed</span></div>
-          <div><b>2</b><span>Certifications</span></div>
-          <div><b>Hyderabad</b><span>India, remote ready</span></div>
+          <a href="../Rafeeq_Khan_Resume.html" class="btn btn-primary magnetic" target="_blank" rel="noopener">Download Resume</a>
+          <a href="#experience" class="btn btn-outline magnetic">See Experience</a>
+          <a href="#projects" class="btn btn-outline magnetic">See Projects</a>
+          <a href="#contact" class="btn btn-outline magnetic">Contact Me</a>
         </div>
       </div>
-
-      <div class="visual" aria-hidden="true">
-        <div class="v-ring"></div>
-        <div class="v-ring r2"></div>
-        <div class="v-ring r3"></div>
-        <span class="v-node n1"></span><span class="v-node n2"></span>
-        <span class="v-node n3"></span><span class="v-node n4"></span>
-        <div class="v-core"><div><b>RK</b><span>Hybrid Cloud</span></div></div>
-        <div class="v-chip c1">Entra Connect</div>
-        <div class="v-chip c2">Failover Cluster</div>
-        <div class="v-chip c3">Hyper-V / AD DS</div>
-        <div class="v-chip c4">Azure Landing Zone</div>
+      <div class="hero-avatar">
+        <div class="char-shadow" aria-hidden="true"></div>
+        <svg class="pixel-char" viewBox="0 0 140 175" aria-hidden="true">
+          <!-- ===== 3D ISOMETRIC VOXEL CHARACTER ===== -->
+          <!-- ===== HEAD ===== -->
+          <!-- hair top -->
+          <polygon points="40,18 90,18 108,8 58,8" fill="#5c3a1e"/>
+          <!-- hair front -->
+          <rect x="40" y="18" width="50" height="14" fill="#4a2e16"/>
+          <!-- hair right side -->
+          <polygon points="90,18 108,8 108,24 90,34" fill="#3a2210"/>
+          <!-- face front -->
+          <rect x="40" y="32" width="50" height="44" fill="#d4955a"/>
+          <!-- face right side (darker) -->
+          <polygon points="90,26 108,16 108,64 90,76" fill="#b07540"/>
+          <!-- ear left -->
+          <rect x="36" y="46" width="6" height="12" rx="2" fill="#c4854e"/>
+          <!-- ear right (on side face) -->
+          <polygon points="104,34 110,30 110,42 104,46" fill="#a06838"/>
+          <!-- eyes -->
+          <rect x="50" y="44" width="7" height="10" rx="1" fill="#1a1220"/>
+          <rect x="72" y="44" width="7" height="10" rx="1" fill="#1a1220"/>
+          <!-- eye shine -->
+          <rect x="51.5" y="45.5" width="2.5" height="3" fill="#e8f4ff" opacity=".85"/>
+          <rect x="73.5" y="45.5" width="2.5" height="3" fill="#e8f4ff" opacity=".85"/>
+          <!-- nose -->
+          <rect x="63" y="54" width="5" height="7" rx="1.5" fill="#c4854e"/>
+          <!-- mouth -->
+          <rect x="58" y="66" width="14" height="3" rx="1.5" fill="#a06838"/>
+          <!-- chin shadow -->
+          <rect x="44" y="72" width="42" height="4" fill="#c4854e"/>
+          <!-- ===== NECK ===== -->
+          <rect x="56" y="76" width="18" height="8" fill="#b07540"/>
+          <rect x="74" y="76" width="8" height="8" fill="#966030"/>
+          <!-- ===== BODY (shirt) ===== -->
+          <!-- shirt top / shoulders -->
+          <polygon points="36,90 104,90 114,84 46,84" fill="#8fa8bc"/>
+          <!-- shirt front -->
+          <rect x="36" y="90" width="68" height="52" fill="#7a96ac"/>
+          <!-- shirt right side (darker) -->
+          <polygon points="104,84 114,78 114,126 104,142" fill="#5e7a90"/>
+          <!-- collar -->
+          <polygon points="58,84 82,84 78,94 62,94" fill="#d6b840"/>
+          <!-- shirt fold lines -->
+          <line x1="50" y1="96" x2="50" y2="134" stroke="#6a86a0" stroke-width="1"/>
+          <line x1="90" y1="96" x2="90" y2="134" stroke="#6a86a0" stroke-width="1"/>
+          <!-- ===== LEFT ARM ===== -->
+          <!-- arm front -->
+          <rect x="20" y="92" width="16" height="42" rx="3" fill="#7a96ac"/>
+          <!-- arm top -->
+          <polygon points="20,92 36,92 42,88 26,88" fill="#8fa8bc"/>
+          <!-- arm side -->
+          <polygon points="36,92 42,88 42,126 36,134" fill="#5e7a90"/>
+          <!-- hand -->
+          <rect x="22" y="134" width="13" height="12" rx="3" fill="#c4854e"/>
+          <!-- ===== RIGHT ARM (on side face) ===== -->
+          <polygon points="108,92 124,84 124,122 108,130" fill="#4e6a80"/>
+          <polygon points="108,130 124,122 124,134 108,142" fill="#a06838"/>
+          <!-- ===== SHADOW DETAIL ===== -->
+          <ellipse cx="70" cy="150" rx="38" ry="5" fill="rgba(0,0,0,.25)"/>
+        </svg>
       </div>
     </div>
   </div>
-</header>
+</section>
 
-<!-- ================= SKILL TICKER ================= -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
-    <span>Windows Server 2025</span><span>Hyper-V</span><span>Active Directory</span><span>Azure</span>
-    <span>Microsoft 365</span><span>Entra Connect</span><span>Failover Clustering</span><span>PowerShell</span>
-    <span>IIS</span><span>Exchange 2025</span><span>RRAS VPN</span><span>AVD</span>
-    <span>Windows Server 2025</span><span>Hyper-V</span><span>Active Directory</span><span>Azure</span>
-    <span>Microsoft 365</span><span>Entra Connect</span><span>Failover Clustering</span><span>PowerShell</span>
-    <span>IIS</span><span>Exchange 2025</span><span>RRAS VPN</span><span>AVD</span>
-  </div>
-</div>
-
-<!-- ================= STATS ================= -->
-<section class="stats">
+<section id="stats">
   <div class="container">
     <div class="stats-grid reveal">
-      <div class="stat"><b data-count="15" data-suffix="+">0</b><span>Production-style labs built</span></div>
-      <div class="stat"><b data-count="20" data-suffix="+">0</b><span>Virtual machines deployed</span></div>
-      <div class="stat"><b data-count="2" data-suffix="">0</b><span>Certifications earned</span></div>
-      <div class="stat"><b data-count="1" data-suffix=" yr">0</b><span>Hands-on lab experience</span></div>
+      <div class="stat-card"><div class="stat-num" data-count="15" data-suffix="+">0</div><div class="stat-lbl">Hands-on Labs</div></div>
+      <div class="stat-card"><div class="stat-num" data-count="1" data-suffix="">0</div><div class="stat-lbl">Year Experience</div></div>
+      <div class="stat-card"><div class="stat-num" data-count="20" data-suffix="+">0</div><div class="stat-lbl">VMs Deployed</div></div>
+      <div class="stat-card"><div class="stat-num" data-count="2" data-suffix="">0</div><div class="stat-lbl">Certifications Earned</div></div>
     </div>
   </div>
 </section>
 
-<!-- ================= EXPERIENCE ================= -->
-<section class="experience" id="experience">
+<section id="experience" class="reveal">
   <div class="container">
-    <div class="sec-head reveal">
-      <div class="eyebrow">Work history</div>
-      <h2 class="title">Experience</h2>
-      <p class="lead">A full virtual datacenter designed, deployed and operated independently — from bare Hyper-V hosts to hybrid identity in Azure.</p>
-    </div>
-
-    <div class="timeline reveal">
-      <article class="tl-item">
-        <div class="tl-top">
-          <span class="tl-pill">1 Year</span>
-          <h3 class="tl-org">HomelabCenter — Hyderabad</h3>
-        </div>
-        <div class="tl-role">IT Infrastructure / Cloud Lab Administrator</div>
-        <ul class="bullets">
-          <li>Built a virtual datacenter on <strong>Hyper-V (Windows Server 2025)</strong>: 10+ VMs, virtual switches, VHDX disks, checkpoints and per-role resource allocation.</li>
-          <li>Deployed an <strong>AD DS domain controller</strong> (HYD-ADDC-V-01): new forest, OUs, users and groups, GPOs, DNS records, forwarders and Sites &amp; Services.</li>
-          <li>Operated core server roles: <strong>File Server</strong> (Share vs NTFS, GPO-mapped drives), <strong>IIS</strong> with public DNS and SSL, <strong>Exchange 2025 SE</strong> (mailboxes, MX/SPF, OWA over HTTPS).</li>
-          <li>Configured a <strong>two-node Hyper-V failover cluster</strong>: iSCSI shared storage, cluster validation, file-share quorum witness, CSV and zero-downtime live migration.</li>
-          <li>Established <strong>site-to-site VPN</strong> (RRAS to Azure VNet Gateway) and proved it with cross-cloud ping plus an additional Azure DC (AZU-ADDS-V-01).</li>
-          <li>Implemented <strong>Entra Connect hybrid identity</strong>: OU and attribute filtering, Password Hash Sync, synced-user verification and SSO testing.</li>
-          <li>Delivered <strong>Azure workloads</strong>: landing zones with policy and RBAC, 2x IIS VMs behind a public load balancer, web app with private endpoint (public access disabled).</li>
-          <li>Protection and end-user computing: <strong>Recovery Services Vault</strong> backup and restore, <strong>AVD</strong> host pool (multi-session Windows 11), Azure file server failover cluster with cloud witness.</li>
+    <div class="section-label">Work History</div>
+    <h2>Experience</h2>
+    <div class="exp-item">
+      <div class="exp-date">1 Year</div>
+      <div>
+        <div class="exp-company">HomelabCenter — Hyderabad</div>
+        <div class="exp-role">IT Infrastructure / Cloud Lab Administrator</div>
+        <ul class="exp-bullets">
+          <li>Built a virtual datacenter on Hyper-V (Windows Server 2025): 10+ VMs, virtual switches, VHDX disks, checkpoints and per-role resource allocation.</li>
+          <li>Deployed AD DS domain controller (HYD-ADDC-V-01): new forest, OUs, users &amp; groups, GPOs, DNS records, forwarders and Sites &amp; Services.</li>
+          <li>Operated core server roles: File Server (Share vs NTFS, GPO-mapped drives), IIS with public DNS + SSL, Exchange 2025 SE (mailboxes, MX/SPF, OWA over HTTPS).</li>
+          <li>Configured a two-node Hyper-V failover cluster: iSCSI shared storage, Cluster Validation, file-share quorum witness, CSV, zero-downtime Live/Quick migration.</li>
+          <li>Established site-to-site VPN (RRAS to Azure VNet Gateway) and proved it with cross-cloud ping plus an additional Azure DC (AZU-ADDS-V-01).</li>
+          <li>Implemented Entra Connect hybrid identity: OU / attribute filtering, Password Hash Sync, synced-user verification and SSO testing.</li>
+          <li>Delivered Azure workloads: Landing Zones with policy &amp; RBAC, 2x IIS VMs behind a Public Load Balancer, Web App with Private Endpoint (public access disabled).</li>
+          <li>Protection &amp; end-user computing: Recovery Services Vault backup/restore, AVD host pool (multi-session Windows 11), Azure file server failover cluster with cloud witness.</li>
         </ul>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ================= PROJECTS ================= -->
-<section class="projects" id="projects">
-  <div class="container">
-    <div class="sec-head reveal">
-      <div class="eyebrow">Selected work</div>
-      <h2 class="title">Projects — 15 Hands-on Labs</h2>
-      <p class="lead">Four flagship builds that cover the full stack: on-premises foundation, high availability, hybrid connectivity and cloud-native services.</p>
-    </div>
-
-    <div class="p-grid">
-
-      <a class="card reveal" href="#contact">
-        <div class="card-head">
-          <span class="card-idx">LAB 01</span>
-          <span class="card-ico">
-            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>
-          </span>
-        </div>
-        <h3>Virtual Datacenter &amp; Active Directory</h3>
-        <p>Windows Server 2025 on Hyper-V: DC promotion, OUs, users, GPO deployment (password policy, drive maps), DNS zones and forwarders, file server with FSRM and GPO-mapped drives — the complete on-prem foundation.</p>
-        <div class="tags"><span class="tag">Hyper-V</span><span class="tag">AD DS</span><span class="tag">GPO</span><span class="tag">DNS</span><span class="tag">File Server</span></div>
-        <div class="card-more">Discuss this lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-      </a>
-
-      <a class="card reveal" href="#contact">
-        <div class="card-head">
-          <span class="card-idx">LAB 02</span>
-          <span class="card-ico">
-            <svg viewBox="0 0 24 24"><path d="M12 3v6M6 21v-4M18 21v-4"/><circle cx="12" cy="12" r="3"/><path d="M6 17h12"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg>
-          </span>
-        </div>
-        <h3>High Availability &amp; Windows Server Roles</h3>
-        <p>Two-node failover cluster with iSCSI shared storage, cluster validation, CSV and zero-downtime live migration; IIS with SSL and Exchange Server 2025 SE with OWA and SMTP over HTTPS.</p>
-        <div class="tags"><span class="tag">Failover Clustering</span><span class="tag">iSCSI</span><span class="tag">IIS</span><span class="tag">Exchange 2025</span></div>
-        <div class="card-more">Discuss this lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-      </a>
-
-      <a class="card reveal" href="#contact">
-        <div class="card-head">
-          <span class="card-idx">LAB 03</span>
-          <span class="card-ico">
-            <svg viewBox="0 0 24 24"><path d="M3 8a9 9 0 0 1 18 0"/><path d="M3 8v3a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V8"/><path d="M12 14v4"/><circle cx="12" cy="20" r="2"/></svg>
-          </span>
-        </div>
-        <h3>Hybrid: On-Prem to Azure VPN &amp; Entra Connect</h3>
-        <p>RRAS site-to-site VPN to Azure VNet Gateway with cross-cloud validation, plus Entra Connect hybrid identity with OU and attribute filtering, Password Hash Sync and SSO testing.</p>
-        <div class="tags"><span class="tag">S2S VPN</span><span class="tag">VNet Gateway</span><span class="tag">Entra Connect</span><span class="tag">Hybrid Identity</span></div>
-        <div class="card-more">Discuss this lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-      </a>
-
-      <a class="card reveal" href="#contact">
-        <div class="card-head">
-          <span class="card-idx">LAB 04</span>
-          <span class="card-ico">
-            <svg viewBox="0 0 24 24"><path d="M17.5 19a4.5 4.5 0 0 0 .5-8.97A6 6 0 0 0 6.2 11.2 3.9 3.9 0 0 0 7 19z"/><path d="M12 12v5"/><path d="m9.5 14.5 2.5-2.5 2.5 2.5"/></svg>
-          </span>
-        </div>
-        <h3>Azure Cloud Labs — Landing Zones to AVD</h3>
-        <p>Landing zones with policy and RBAC, HA web tier on a public load balancer, PaaS web app with private endpoint, VM backup and restore via Recovery Services Vault, AVD host pool and Azure file server failover cluster with cloud witness.</p>
-        <div class="tags"><span class="tag">Landing Zones</span><span class="tag">Load Balancer</span><span class="tag">Private Endpoint</span><span class="tag">AVD</span><span class="tag">Backup</span></div>
-        <div class="card-more">Discuss this lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<!-- ================= SKILLS ================= -->
-<section class="skills" id="skills">
-  <div class="container">
-    <div class="sec-head reveal">
-      <div class="eyebrow">Toolset</div>
-      <h2 class="title">Technical Skills</h2>
-      <p class="lead">Every skill below has been applied in a running lab — not just read about.</p>
-    </div>
-
-    <div class="skill-grid">
-      <div class="skill reveal">
-        <div class="skill-top"><span class="skill-num">01</span><h4>Cloud — Azure</h4></div>
-        <p>Management groups, landing zones, policy and RBAC, compute and networking foundations.</p>
-        <div class="chips"><span class="chip">Landing Zones</span><span class="chip">Policy &amp; RBAC</span><span class="chip">Load Balancer</span><span class="chip">Private Endpoint</span><span class="chip">AVD</span><span class="chip">Recovery Vault</span></div>
-      </div>
-      <div class="skill reveal">
-        <div class="skill-top"><span class="skill-num">02</span><h4>Server Roles &amp; HA</h4></div>
-        <p>The core Windows Server skill set, from role deployment to clustering and migration.</p>
-        <div class="chips"><span class="chip">Hyper-V</span><span class="chip">AD DS</span><span class="chip">DNS</span><span class="chip">GPO</span><span class="chip">File Server</span><span class="chip">IIS</span><span class="chip">Exchange 2025</span><span class="chip">Failover Cluster</span></div>
-      </div>
-      <div class="skill reveal">
-        <div class="skill-top"><span class="skill-num">03</span><h4>Networking</h4></div>
-        <p>Site-to-site connectivity, routing and the fundamentals underneath it all.</p>
-        <div class="chips"><span class="chip">RRAS S2S VPN</span><span class="chip">VNet Gateway</span><span class="chip">Peering</span><span class="chip">TCP/IP</span><span class="chip">VLAN</span><span class="chip">DHCP</span></div>
-      </div>
-      <div class="skill reveal">
-        <div class="skill-top"><span class="skill-num">04</span><h4>Identity &amp; M365</h4></div>
-        <p>On-premises directory extended into the cloud with hybrid identity and single sign-on.</p>
-        <div class="chips"><span class="chip">Microsoft Entra ID</span><span class="chip">Entra Connect</span><span class="chip">Password Hash Sync</span><span class="chip">SSO</span></div>
-      </div>
-      <div class="skill reveal">
-        <div class="skill-top"><span class="skill-num">05</span><h4>Operating Systems</h4></div>
-        <p>Current and previous generation Windows Server plus daily Linux familiarity.</p>
-        <div class="chips"><span class="chip">Server 2025</span><span class="chip">Server 2022</span><span class="chip">Core &amp; Desktop</span><span class="chip">Windows 11</span><span class="chip">Linux basics</span></div>
-      </div>
-      <div class="skill reveal">
-        <div class="skill-top"><span class="skill-num">06</span><h4>Tools &amp; Scripting</h4></div>
-        <p>Day-to-day administration surfaces and the automation that speeds them up.</p>
-        <div class="chips"><span class="chip">PowerShell</span><span class="chip">Server Manager</span><span class="chip">Azure Portal</span><span class="chip">Azure CLI</span><span class="chip">Entra Admin Center</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= CONTACT ================= -->
-<section class="contact" id="contact">
+<section id="projects" class="reveal">
   <div class="container">
-    <div class="contact-box reveal">
-      <div class="eyebrow" style="justify-content:center">Reach out</div>
-      <h2>Let's build your infrastructure</h2>
-      <p class="sub">Open to IT Infrastructure, Azure and Microsoft 365 Administrator roles — on-site in Hyderabad or remote.</p>
-      <div class="contact-actions">
-        <a class="btn btn-primary" href="mailto:rafeeqkhan.it7@gmail.com">
-          Email me
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-        </a>
-        <a class="btn btn-ghost" href="Rafeeq_Khan_Resume.pptx" download>Download resume</a>
-      </div>
-      <div class="info-row">
-        <a class="info" href="mailto:rafeeqkhan.it7@gmail.com">
-          <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-          rafeeqkhan.it7@gmail.com
-        </a>
-        <a class="info" href="tel:+919985142897">
-          <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
-          +91 99851 42897
-        </a>
-        <span class="info">
-          <svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Hyderabad, India
-        </span>
+    <div class="section-label">Selected Work</div>
+    <h2>Projects — 15 Hands-on Labs</h2>
+    <div class="projects-grid">
+
+      <a class="project-card tilt" href="#contact" data-cursor="View">
+        <div class="card-media">
+          <!-- server racks + AD tree -->
+          <svg viewBox="0 0 200 125" fill="none" stroke="#d6b840" stroke-width="1.2">
+            <!-- rack 1 -->
+            <rect x="22" y="30" width="34" height="70" rx="3" fill="#111118" stroke="rgba(214,184,64,.5)"/>
+            <rect x="26" y="35" width="26" height="10" rx="2" fill="none" stroke="rgba(214,184,64,.35)"/>
+            <rect x="26" y="49" width="26" height="10" rx="2" fill="none" stroke="rgba(214,184,64,.35)"/>
+            <rect x="26" y="63" width="26" height="10" rx="2" fill="none" stroke="rgba(214,184,64,.35)"/>
+            <rect x="26" y="77" width="26" height="10" rx="2" fill="none" stroke="rgba(214,184,64,.35)"/>
+            <circle class="led" cx="48" cy="40" r="1.6" fill="#3ddc84" stroke="none"/>
+            <circle class="led d1" cx="48" cy="54" r="1.6" fill="#d6b840" stroke="none"/>
+            <circle class="led d2" cx="48" cy="68" r="1.6" fill="#3ddc84" stroke="none"/>
+            <circle class="led d3" cx="48" cy="82" r="1.6" fill="#d6b840" stroke="none"/>
+            <!-- rack 2 -->
+            <rect x="64" y="42" width="30" height="58" rx="3" fill="#111118" stroke="rgba(214,184,64,.4)"/>
+            <rect x="68" y="47" width="22" height="9" rx="2" fill="none" stroke="rgba(214,184,64,.3)"/>
+            <rect x="68" y="60" width="22" height="9" rx="2" fill="none" stroke="rgba(214,184,64,.3)"/>
+            <rect x="68" y="73" width="22" height="9" rx="2" fill="none" stroke="rgba(214,184,64,.3)"/>
+            <circle class="led d2" cx="86" cy="51.5" r="1.4" fill="#3ddc84" stroke="none"/>
+            <circle class="led d3" cx="86" cy="64.5" r="1.4" fill="#d6b840" stroke="none"/>
+            <circle class="led d1" cx="86" cy="77.5" r="1.4" fill="#3ddc84" stroke="none"/>
+            <!-- AD tree: root DC + 3 children -->
+            <rect class="floaty-svg" x="128" y="34" width="40" height="16" rx="3" fill="rgba(214,184,64,.12)" stroke="rgba(214,184,64,.6)"/>
+            <text x="148" y="45" text-anchor="middle" font-size="7" fill="#f0e2a0" font-family="monospace" stroke="none">AD DC</text>
+            <path d="M148 50 V60 M110 60 H186 M110 60 V68 M148 60 V68 M186 60 V68" stroke="rgba(214,184,64,.4)" fill="none"/>
+            <rect x="98" y="68" width="24" height="12" rx="2" fill="none" stroke="rgba(214,184,64,.4)"/>
+            <rect x="136" y="68" width="24" height="12" rx="2" fill="none" stroke="rgba(214,184,64,.4)"/>
+            <rect x="174" y="68" width="24" height="12" rx="2" fill="none" stroke="rgba(214,184,64,.4)"/>
+            <text x="110" y="76.5" text-anchor="middle" font-size="5.5" fill="#8a8aa8" stroke="none">Users</text>
+            <text x="148" y="76.5" text-anchor="middle" font-size="5.5" fill="#8a8aa8" stroke="none">OUs</text>
+            <text x="186" y="76.5" text-anchor="middle" font-size="5.5" fill="#8a8aa8" stroke="none">GPO</text>
+            <circle class="pulse" cx="148" cy="42" r="4" fill="#f0e2a0" stroke="none"/>
+          </svg>
+          <div class="project-num">01</div>
+        </div>
+        <div class="project-title">Virtual Datacenter &amp; Active Directory</div>
+        <p class="project-desc">Windows Server 2025 on Hyper-V: DC promotion, OUs, users, GPO deployment (password policy, drive maps), DNS zones and forwarders, File Server with FSRM and GPO-mapped drives — the complete on-prem foundation.</p>
+        <div class="project-tags"><span class="tag">Hyper-V</span><span class="tag">AD DS</span><span class="tag">GPO</span><span class="tag">DNS</span><span class="tag">File Server</span></div>
+        <div class="project-open">View project</div>
+      </a>
+
+      <a class="project-card tilt" href="#contact" data-cursor="View">
+        <div class="card-media">
+          <!-- two-node cluster + shared storage -->
+          <svg viewBox="0 0 200 125" fill="none" stroke="#d6b840" stroke-width="1.2">
+            <!-- node A -->
+            <rect x="28" y="38" width="44" height="34" rx="4" fill="#111118" stroke="rgba(214,184,64,.55)"/>
+            <text x="50" y="52" text-anchor="middle" font-size="7" fill="#f0e2a0" font-family="monospace" stroke="none">NODE A</text>
+            <circle class="led" cx="42" cy="60" r="2" fill="#3ddc84" stroke="none"/>
+            <circle class="led d1" cx="50" cy="60" r="2" fill="#3ddc84" stroke="none"/>
+            <circle class="led d2" cx="58" cy="60" r="2" fill="#d6b840" stroke="none"/>
+            <!-- node B -->
+            <rect x="128" y="38" width="44" height="34" rx="4" fill="#111118" stroke="rgba(214,184,64,.55)"/>
+            <text x="150" y="52" text-anchor="middle" font-size="7" fill="#f0e2a0" font-family="monospace" stroke="none">NODE B</text>
+            <circle class="led d1" cx="142" cy="60" r="2" fill="#3ddc84" stroke="none"/>
+            <circle class="led d2" cx="150" cy="60" r="2" fill="#d6b840" stroke="none"/>
+            <circle class="led d3" cx="158" cy="60" r="2" fill="#3ddc84" stroke="none"/>
+            <!-- cluster link between nodes -->
+            <path class="flow" d="M72 55 H128" stroke="rgba(214,184,64,.55)" stroke-width="1.4" fill="none"/>
+            <text x="100" y="48" text-anchor="middle" font-size="5.5" fill="#d6b840" stroke="none">Failover Cluster</text>
+            <!-- shared iSCSI storage -->
+            <rect x="70" y="86" width="60" height="24" rx="3" fill="rgba(214,184,64,.08)" stroke="rgba(214,184,64,.5)"/>
+            <text x="100" y="97" text-anchor="middle" font-size="6" fill="#f0e2a0" font-family="monospace" stroke="none">iSCSI Shared</text>
+            <text x="100" y="105" text-anchor="middle" font-size="5" fill="#8a8aa8" stroke="none">CSV · Witness</text>
+            <path d="M50 72 V86 H70 M150 72 V86 H130" stroke="rgba(214,184,64,.35)" fill="none"/>
+            <circle class="pulse" cx="100" cy="55" r="3.5" fill="#f0e2a0" stroke="none"/>
+          </svg>
+          <div class="project-num">02</div>
+        </div>
+        <div class="project-title">High Availability &amp; Windows Server Roles</div>
+        <p class="project-desc">Two-node failover cluster with iSCSI shared storage, Cluster Validation, CSV and zero-downtime Live Migration; IIS with SSL and Exchange Server 2025 SE with OWA/SMTP over HTTPS.</p>
+        <div class="project-tags"><span class="tag">Failover Clustering</span><span class="tag">iSCSI</span><span class="tag">IIS</span><span class="tag">Exchange 2025</span></div>
+        <div class="project-open">View project</div>
+      </a>
+
+      <a class="project-card tilt" href="#contact" data-cursor="View">
+        <div class="card-media">
+          <!-- on-prem building <-> cloud via VPN tunnel -->
+          <svg viewBox="0 0 200 125" fill="none" stroke="#d6b840" stroke-width="1.2">
+            <!-- on-prem site -->
+            <rect x="24" y="52" width="38" height="42" rx="3" fill="#111118" stroke="rgba(214,184,64,.55)"/>
+            <path d="M24 52 L43 38 L62 52" fill="none" stroke="rgba(214,184,64,.55)"/>
+            <rect x="32" y="62" width="8" height="8" fill="none" stroke="rgba(214,184,64,.4)"/>
+            <rect x="46" y="62" width="8" height="8" fill="none" stroke="rgba(214,184,64,.4)"/>
+            <rect x="38" y="78" width="10" height="16" fill="none" stroke="rgba(214,184,64,.4)"/>
+            <circle class="led" cx="58" cy="58" r="1.6" fill="#3ddc84" stroke="none"/>
+            <text x="43" y="108" text-anchor="middle" font-size="5.5" fill="#8a8aa8" stroke="none">On-Prem HQ</text>
+            <text x="43" y="116" text-anchor="middle" font-size="5" fill="#d6b840" stroke="none">RRAS</text>
+            <!-- VPN tunnel -->
+            <path class="flow" d="M62 70 H138" stroke="rgba(214,184,64,.6)" stroke-width="1.6" fill="none"/>
+            <path d="M62 66 V74 M138 66 V74" stroke="rgba(214,184,64,.6)" fill="none"/>
+            <text x="100" y="62" text-anchor="middle" font-size="5.5" fill="#f0e2a0" stroke="none">S2S VPN Tunnel</text>
+            <text x="100" y="82" text-anchor="middle" font-size="5" fill="#8a8aa8" stroke="none">IPsec · BGP</text>
+            <!-- cloud -->
+            <path class="floaty-svg" d="M155 72 a12 12 0 0 1 3 -23 a15 15 0 0 1 29 -2 a11 11 0 0 1 5 25 z" fill="rgba(214,184,64,.1)" stroke="rgba(214,184,64,.6)" stroke-width="1.2"/>
+            <text x="175" y="66" text-anchor="middle" font-size="6" fill="#f0e2a0" font-family="monospace" stroke="none">Azure</text>
+            <text x="175" y="108" text-anchor="middle" font-size="5.5" fill="#8a8aa8" stroke="none">VNet Gateway</text>
+            <circle class="pulse" cx="100" cy="70" r="3" fill="#f0e2a0" stroke="none"/>
+          </svg>
+          <div class="project-num">03</div>
+        </div>
+        <div class="project-title">Hybrid: On-Prem to Azure VPN &amp; Entra Connect</div>
+        <p class="project-desc">RRAS site-to-site VPN to Azure VNet Gateway with cross-cloud validation, plus Entra Connect hybrid identity with OU/attribute filtering, Password Hash Sync and SSO testing.</p>
+        <div class="project-tags"><span class="tag">S2S VPN</span><span class="tag">VNet Gateway</span><span class="tag">Entra Connect</span><span class="tag">Hybrid Identity</span></div>
+        <div class="project-open">View project</div>
+      </a>
+
+      <a class="project-card tilt" href="#contact" data-cursor="View">
+        <div class="card-media">
+          <!-- Azure landing zone: center cloud + service nodes -->
+          <svg viewBox="0 0 200 125" fill="none" stroke="#d6b840" stroke-width="1.2">
+            <!-- center hub -->
+            <circle cx="100" cy="62" r="16" fill="rgba(214,184,64,.1)" stroke="rgba(214,184,64,.6)"/>
+            <text x="100" y="60" text-anchor="middle" font-size="6" fill="#f0e2a0" font-family="monospace" stroke="none">Azure</text>
+            <text x="100" y="68" text-anchor="middle" font-size="5" fill="#d6b840" stroke="none">Landing Zn</text>
+            <!-- spokes -->
+            <path d="M100 46 V28 M114 54 L138 40 M114 70 L138 84 M100 78 V96 M86 70 L62 84 M86 54 L62 40" stroke="rgba(214,184,64,.3)" fill="none"/>
+            <!-- service boxes -->
+            <rect x="82" y="12" width="36" height="16" rx="3" fill="#111118" stroke="rgba(214,184,64,.45)"/>
+            <text x="100" y="22" text-anchor="middle" font-size="5" fill="#8a8aa8" stroke="none">Policy · RBAC</text>
+            <rect x="138" y="32" width="38" height="16" rx="3" fill="#111118" stroke="rgba(214,184,64,.45)"/>
+            <text x="157" y="42" text-anchor="middle" font-size="5" fill="#8a8aa8" stroke="none">Load Balancer</text>
+            <rect x="138" y="76" width="38" height="16" rx="3" fill="#111118" stroke="rgba(214,184,64,.45)"/>
+            <text x="157" y="86" text-anchor="middle" font-size="5" fill="#8a8aa8" stroke="none">AVD Pool</text>
+            <rect x="82" y="96" width="36" height="16" rx="3" fill="#111118" stroke="rgba(214,184,64,.45)"/>
+            <text x="100" y="106" text-anchor="middle" font-size="5" fill="#8a8aa8" stroke="none">Backup Vault</text>
+            <rect x="24" y="76" width="38" height="16" rx="3" fill="#111118" stroke="rgba(214,184,64,.45)"/>
+            <text x="43" y="86" text-anchor="middle" font-size="5" fill="#8a8aa8" stroke="none">Private EP</text>
+            <rect x="24" y="32" width="38" height="16" rx="3" fill="#111118" stroke="rgba(214,184,64,.45)"/>
+            <text x="43" y="42" text-anchor="middle" font-size="5" fill="#8a8aa8" stroke="none">IIS VMs ×2</text>
+            <circle class="pulse" cx="100" cy="62" r="4" fill="#f0e2a0" stroke="none"/>
+            <circle class="led" cx="100" cy="20" r="1.4" fill="#3ddc84" stroke="none"/>
+            <circle class="led d1" cx="157" cy="40" r="1.4" fill="#3ddc84" stroke="none"/>
+            <circle class="led d2" cx="157" cy="84" r="1.4" fill="#d6b840" stroke="none"/>
+            <circle class="led d3" cx="100" cy="104" r="1.4" fill="#3ddc84" stroke="none"/>
+            <circle class="led d1" cx="43" cy="84" r="1.4" fill="#d6b840" stroke="none"/>
+            <circle class="led d2" cx="43" cy="40" r="1.4" fill="#3ddc84" stroke="none"/>
+          </svg>
+          <div class="project-num">04</div>
+        </div>
+        <div class="project-title">Azure Cloud Labs (Landing Zones → AVD)</div>
+        <p class="project-desc">Landing Zones with policy/RBAC, HA web tier on Public Load Balancer, PaaS Web App with Private Endpoint, VM backup &amp; restore via Recovery Services Vault, AVD host pool and Azure file server failover cluster with Cloud Witness.</p>
+        <div class="project-tags"><span class="tag">Landing Zones</span><span class="tag">Load Balancer</span><span class="tag">Private Endpoint</span><span class="tag">AVD</span><span class="tag">Backup</span></div>
+        <div class="project-open">View project</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="reveal">
+  <div class="container">
+    <div class="section-label">Toolset</div>
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-box"><b>Cloud (Azure)</b><span>Management Groups, Landing Zones, Policies &amp; RBAC, VMs, Public Load Balancer, App Service + Private Endpoint, Recovery Services Vault, AVD, Cloud Witness</span></div>
+      <div class="skill-box"><b>Operating Systems</b><span>Windows Server 2025 / 2022 (Desktop Experience &amp; Core), Windows 11, Linux basics</span></div>
+      <div class="skill-box"><b>Server Roles &amp; HA</b><span>Hyper-V, AD DS, DNS, GPO, File Server + FSRM, IIS, Exchange Server 2025 SE, WSUS (basic), Failover Clustering, iSCSI Target, CSV, Live Migration</span></div>
+      <div class="skill-box"><b>Networking</b><span>RRAS S2S VPN, VNet Gateway, VNet Peering, NAT, TCP/IP, VLANs, DHCP, DNS</span></div>
+      <div class="skill-box"><b>Identity / M365</b><span>Microsoft Entra ID (Azure AD), Entra Connect Sync, Password Hash Sync, SSO</span></div>
+      <div class="skill-box"><b>Tools &amp; Scripting</b><span>PowerShell, Server Manager, Entra Admin Center, Azure Portal, Azure CLI</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="reveal">
+  <div class="container">
+    <div class="section-label">Reach Out</div>
+    <div class="contact-box">
+      <h2>Let's Connect</h2>
+      <p class="contact-sub">Open to IT Infrastructure, Azure and M365 Administrator opportunities.</p>
+      <div class="contact-links">
+        <a class="contact-link magnetic" href="mailto:rafeeqkhan.it7@gmail.com">✉ Email</a>
+        <a class="contact-link magnetic" href="tel:+919985142897">📱 +91 9985142897</a>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <span>&copy; 2026 Rafeeq Khan — IT Infrastructure &amp; Cloud Administrator</span>
-  <span>Designed and built with HTML, CSS and JavaScript</span>
+  <span>© 2026 Rafeeq Khan</span>
+  <span>Built with HTML · CSS · JS</span>
 </footer>
 
-<a class="to-top" id="toTop" href="#top" aria-label="Back to top">
-  <svg viewBox="0 0 24 24"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
-</a>
+<a class="to-top" id="toTop" href="#hero" aria-label="Back to top">↑</a>
 
 <script>
-(function(){
-  'use strict';
-  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // scroll progress + back-to-top
+  const sp = document.getElementById('scrollProgress');
+  const toTop = document.getElementById('toTop');
+  addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const p = h.scrollTop / (h.scrollHeight - h.clientHeight);
+    sp.style.width = (p * 100) + '%';
+    toTop.classList.toggle('show', h.scrollTop > 600);
+  }, { passive: true });
 
-  /* progress + sticky nav + back to top */
-  var bar = document.getElementById('progress'),
-      nav = document.getElementById('nav'),
-      top = document.getElementById('toTop');
-  function onScroll(){
-    var d = document.documentElement;
-    var p = d.scrollTop / (d.scrollHeight - d.clientHeight || 1);
-    bar.style.width = (p * 100) + '%';
-    nav.classList.toggle('stuck', d.scrollTop > 20);
-    top.classList.toggle('show', d.scrollTop > 640);
-  }
-  addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
-
-  /* mobile menu */
-  var burger = document.getElementById('burger');
-  burger.addEventListener('click', function(){
-    var open = nav.classList.toggle('menu-open');
-    burger.classList.toggle('open', open);
-    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  document.querySelectorAll('#navLinks a, .nav-cta').forEach(function(a){
-    a.addEventListener('click', function(){
-      nav.classList.remove('menu-open'); burger.classList.remove('open');
-      burger.setAttribute('aria-expanded','false');
+  // custom cursor
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  const label = document.getElementById('cursorLabel');
+  if (matchMedia('(pointer:fine)').matches) {
+    document.body.classList.add('has-cursor');
+    let rx = 0, ry = 0, tx = 0, ty = 0;
+    addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; dot.style.left = tx + 'px'; dot.style.top = ty + 'px'; });
+    (function loop() { rx += (tx - rx) * .18; ry += (ty - ry) * .18; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(loop); })();
+    document.querySelectorAll('a, button, .project-card').forEach(el => {
+      el.addEventListener('mouseenter', () => { ring.classList.add('is-link'); label.textContent = el.dataset.cursor || 'Open'; });
+      el.addEventListener('mouseleave', () => ring.classList.remove('is-link'));
     });
-  });
+  }
 
-  /* typing */
-  var phrases = ['On-Prem · Hybrid · Azure','Windows Server 2025 & Hyper-V','Active Directory & Entra Connect','Azure Landing Zones & AVD','PowerShell · M365 · Networking'];
-  var el = document.getElementById('typed'), pi = 0, ci = 0, del = false;
-  if (reduced) { el.textContent = phrases[0]; }
-  else (function tick(){
-    var cur = phrases[pi];
-    el.textContent = cur.slice(0, ci);
-    if (!del && ci < cur.length) { ci++; setTimeout(tick, 45); }
-    else if (!del) { del = true; setTimeout(tick, 1700); }
-    else if (ci > 0) { ci--; setTimeout(tick, 22); }
-    else { del = false; pi = (pi + 1) % phrases.length; setTimeout(tick, 380); }
+  // typing effect
+  const phrases = ['On-Prem · Hybrid · Azure', 'Windows Server 2025 & Hyper-V', 'Active Directory & Entra Connect', 'Azure Landing Zones & AVD', 'PowerShell · M365 · Networking'];
+  const typed = document.getElementById('typed');
+  let pi = 0, ci = 0, del = false;
+  (function type() {
+    const cur = phrases[pi];
+    typed.textContent = cur.slice(0, ci);
+    if (!del && ci < cur.length) { ci++; setTimeout(type, 42); }
+    else if (!del && ci === cur.length) { del = true; setTimeout(type, 1600); }
+    else if (del && ci > 0) { ci--; setTimeout(type, 22); }
+    else { del = false; pi = (pi + 1) % phrases.length; setTimeout(type, 350); }
   })();
 
-  /* reveal */
-  if (!('IntersectionObserver' in window)) {
-    document.querySelectorAll('.reveal').forEach(function(n){ n.classList.add('in'); });
-  } else {
-    var revealObs = new IntersectionObserver(function(es){
-      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); revealObs.unobserve(e.target);} });
-    }, {threshold:.14, rootMargin:'0px 0px -40px 0px'});
-    document.querySelectorAll('.reveal').forEach(function(n){ revealObs.observe(n); });
-  }
+  // hero golden wireframe globe
+  (function () {
+    const c = document.getElementById('netCanvas');
+    if (!c) return;
+    const ctx = c.getContext('2d');
+    let w, h, cx, cy, R, rot = 0, t0 = performance.now();
+    const dpr = devicePixelRatio || 1;
+    // city markers [lat, lon]
+    const cities = [
+      [17.4, 78.5], [19.1, 72.9], [13.0, 77.6], [25.2, 55.3], [24.7, 46.7],
+      [51.5, -0.1], [50.1, 8.7], [48.9, 2.3], [40.7, -74.0], [37.8, -122.4],
+      [1.35, 103.8], [35.7, 139.7], [-33.9, 151.2], [-23.5, -46.6], [-1.3, 36.8], [3.1, 101.7]
+    ];
+    const pairs = [[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[3,7],[3,8],[5,7],[8,9],[0,10],[10,11],[10,12],[9,13],[4,14],[0,15]];
+    // simplified continent outlines (lat/lon polylines) — rough shapes
+    const continents = [
+      // North America
+      [[60,-140],[65,-100],[70,-90],[60,-60],[45,-65],[40,-75],[30,-80],[25,-80],[18,-88],[15,-90],[20,-105],[30,-115],[40,-125],[48,-125],[60,-140]],
+      // South America
+      [[10,-75],[5,-70],[0,-55],[-10,-38],[-25,-40],[-35,-58],[-40,-65],[-50,-70],[-55,-68],[-45,-72],[-20,-70],[-5,-80],[10,-75]],
+      // Europe
+      [[36,-9],[43,-9],[48,-5],[50,2],[55,10],[60,25],[65,30],[70,30],[65,15],[55,10],[50,14],[45,15],[40,20],[36,10],[36,-9]],
+      // Africa
+      [[35,-5],[30,32],[30,34],[25,35],[15,40],[5,40],[0,40],[-10,40],[-20,35],[-35,20],[-35,18],[-20,12],[-5,12],[5,0],[10,-15],[20,-17],[28,-15],[35,-5]],
+      // Asia
+      [[40,30],[40,60],[45,65],[50,70],[60,70],[65,90],[60,130],[45,140],[35,128],[30,120],[25,100],[20,95],[10,80],[8,78],[25,68],[30,50],[35,40],[40,30]],
+      // Australia
+      [[-12,130],[-15,142],[-25,153],[-35,150],[-38,145],[-35,138],[-30,125],[-20,114],[-14,125],[-12,130]]
+    ];
+    function size() {
+      const r = c.parentElement.getBoundingClientRect();
+      w = c.width = r.width * dpr; h = c.height = r.height * dpr;
+      c.style.width = r.width + 'px'; c.style.height = r.height + 'px';
+      cx = w * 0.64; cy = h * 0.46; R = Math.min(w, h) * 0.42;
+    }
+    function proj(lat, lon) {
+      const la = lat * Math.PI / 180, lo = (lon + rot) * Math.PI / 180;
+      const x = Math.cos(la) * Math.sin(lo), y = Math.sin(la), z = Math.cos(la) * Math.cos(lo);
+      const tilt = -0.22, yt = y * Math.cos(tilt) - z * Math.sin(tilt), zt = y * Math.sin(tilt) + z * Math.cos(tilt);
+      return { x: cx + x * R, y: cy - yt * R, z: zt };
+    }
+    function draw() {
+      const now = performance.now(); const t = (now - t0) / 1000;
+      rot = t * 7; // slow spin
+      ctx.clearRect(0, 0, w, h);
+      // soft glow behind globe
+      let g = ctx.createRadialGradient(cx, cy, R * 0.1, cx, cy, R * 1.35);
+      g.addColorStop(0, 'rgba(214,184,64,.06)'); g.addColorStop(1, 'rgba(214,184,64,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, R * 1.35, 0, Math.PI * 2); ctx.fill();
+      // globe disk
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(10,10,18,.55)'; ctx.fill();
+      ctx.strokeStyle = 'rgba(214,184,64,.3)'; ctx.lineWidth = 1.1 * dpr; ctx.stroke();
+      // latitude rings
+      for (let lat = -60; lat <= 60; lat += 30) {
+        ctx.beginPath(); let started = false;
+        for (let lon = -180; lon <= 180; lon += 4) {
+          const p = proj(lat, lon);
+          if (p.z > 0.02) { started ? ctx.lineTo(p.x, p.y) : (ctx.moveTo(p.x, p.y), started = true); }
+          else started = false;
+        }
+        ctx.strokeStyle = 'rgba(214,184,64,.08)'; ctx.lineWidth = 0.7 * dpr; ctx.stroke();
+      }
+      // longitude lines
+      for (let lon = -180; lon < 180; lon += 24) {
+        ctx.beginPath(); let started = false;
+        for (let lat = -90; lat <= 90; lat += 4) {
+          const p = proj(lat, lon);
+          if (p.z > 0.02) { started ? ctx.lineTo(p.x, p.y) : (ctx.moveTo(p.x, p.y), started = true); }
+          else started = false;
+        }
+        ctx.strokeStyle = 'rgba(214,184,64,.08)'; ctx.lineWidth = 0.7 * dpr; ctx.stroke();
+      }
+      // continents (golden wireframe)
+      continents.forEach(shape => {
+        ctx.beginPath(); let started = false;
+        shape.forEach(([lat, lon]) => {
+          const p = proj(lat, lon);
+          if (p.z > 0.02) { started ? ctx.lineTo(p.x, p.y) : (ctx.moveTo(p.x, p.y), started = true); }
+          else started = false;
+        });
+        ctx.strokeStyle = 'rgba(214,184,64,.42)'; ctx.lineWidth = 1.05 * dpr; ctx.stroke();
+      });
+      // connection arcs between cities
+      pairs.forEach(([i, j]) => {
+        const a = proj(cities[i][0], cities[i][1]), b = proj(cities[j][0], cities[j][1]);
+        if (a.z < 0.02 || b.z < 0.02) return;
+        const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+        const dx = mx - cx, dy = my - cy, dist = Math.hypot(dx, dy) || 1;
+        const qx = mx + (dx / dist) * R * 0.22, qy = my + (dy / dist) * R * 0.22;
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.quadraticCurveTo(qx, qy, b.x, b.y);
+        ctx.strokeStyle = 'rgba(214,184,64,.2)'; ctx.lineWidth = 0.8 * dpr; ctx.stroke();
+      });
+      // city dots
+      cities.forEach(([lat, lon], idx) => {
+        const p = proj(lat, lon);
+        if (p.z < 0.02) return;
+        const home = idx === 0;
+        const rr = (home ? 3 : 1.6) * dpr;
+        const gl = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, rr * 7);
+        gl.addColorStop(0, home ? 'rgba(240,226,160,.95)' : 'rgba(214,184,64,.7)');
+        gl.addColorStop(1, 'rgba(214,184,64,0)');
+        ctx.fillStyle = gl; ctx.beginPath(); ctx.arc(p.x, p.y, rr * 7, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(p.x, p.y, rr, 0, Math.PI * 2);
+        ctx.fillStyle = home ? '#f0e2a0' : '#d6b840'; ctx.fill();
+        if (home) { // pulse ring on Hyderabad
+          const ph = (now % 2400) / 2400;
+          ctx.beginPath(); ctx.arc(p.x, p.y, rr + ph * 18 * dpr, 0, Math.PI * 2);
+          ctx.strokeStyle = 'rgba(240,226,160,' + ((1 - ph) * 0.55) + ')';
+          ctx.lineWidth = 1.4 * dpr; ctx.stroke();
+        }
+      });
+      requestAnimationFrame(draw);
+    }
+    size(); draw();
+    addEventListener('resize', size);
+    setTimeout(() => c.classList.add('is-ready'), 300);
+  })();
 
-  /* counters */
-  var cObs = new IntersectionObserver(function(es){
-    es.forEach(function(e){
-      if(!e.isIntersecting) return;
-      e.target.querySelectorAll('[data-count]').forEach(function(n){
-        var end = +n.dataset.count, suf = n.dataset.suffix || '', t0 = performance.now(), dur = 1400;
-        (function step(t){
-          var k = Math.min(1,(t-t0)/dur);
-          n.textContent = Math.round(end*(1-Math.pow(1-k,3))) + suf;
-          if(k<1) requestAnimationFrame(step);
+  // stat counters
+  const statObs = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.querySelectorAll('[data-count]').forEach(el => {
+        const end = +el.dataset.count, suf = el.dataset.suffix || '';
+        const t0 = performance.now(), dur = 1400;
+        (function step(t) {
+          const k = Math.min(1, (t - t0) / dur);
+          el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3))) + suf;
+          if (k < 1) requestAnimationFrame(step);
         })(t0);
       });
-      cObs.unobserve(e.target);
+      statObs.unobserve(e.target);
     });
-  }, {threshold:.4});
-  document.querySelectorAll('.stats-grid').forEach(function(n){ cObs.observe(n); });
+  }, { threshold: .4 });
+  document.querySelectorAll('.stats-grid').forEach(el => statObs.observe(el));
 
-  /* nav active state */
-  var links = {};
-  document.querySelectorAll('#navLinks a').forEach(function(a){ links[a.getAttribute('href').slice(1)] = a; });
-  var sObs = new IntersectionObserver(function(es){
-    es.forEach(function(e){
-      var a = links[e.target.id]; if(!a) return;
-      if(e.isIntersecting){ for(var k in links) links[k].classList.remove('active'); a.classList.add('active'); }
+  // project card tilt
+  document.querySelectorAll('.tilt').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      card.style.transform = 'perspective(900px) rotateY(' + (x * 6) + 'deg) rotateX(' + (-y * 6) + 'deg) translateY(-2px)';
     });
-  }, {threshold:.45});
-  ['experience','projects','skills','contact'].forEach(function(id){
-    var s = document.getElementById(id); if(s) sObs.observe(s);
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
   });
 
-  /* card pointer glow */
-  if (matchMedia('(pointer:fine)').matches && !reduced){
-    document.querySelectorAll('.card').forEach(function(c){
-      c.addEventListener('mousemove', function(e){
-        var r = c.getBoundingClientRect();
-        c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-        c.style.setProperty('--my', (e.clientY - r.top) + 'px');
-      });
+  // scroll reveal + nav active
+  const obs = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  const navObs = new IntersectionObserver(es => {
+    es.forEach(e => {
+      const a = document.querySelector('[data-nav][href="#' + e.target.id + '"]');
+      if (a) a.classList.toggle('active', e.isIntersecting);
     });
-  }
-})();
+  }, { threshold: .5 });
+  document.querySelectorAll('#experience, #projects, #skills, #contact').forEach(s => navObs.observe(s));
 </script>
 </body>
 </html>
